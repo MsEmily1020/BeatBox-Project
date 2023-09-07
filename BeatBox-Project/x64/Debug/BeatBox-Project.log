@@ -1,0 +1,3 @@
+﻿  Vcpkg is unable to link because we cannot decide between Release and Debug libraries. Please define the property VcpkgConfiguration to be 'Release' or 'Debug' (currently '').
+  main.cpp
+  BeatBox-Project.vcxproj -> C:\private\BeatBox-Project\x64\Debug\BeatBox-Project.exe
