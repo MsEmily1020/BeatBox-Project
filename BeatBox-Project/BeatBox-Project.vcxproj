@@ -142,12 +142,13 @@
     <Image Include="image\space.png" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="..\..\..\Users\khs10\OneDrive\문서\카카오톡 받은 파일\8TURN-02-TIC TAC.mp3" />
-    <Media Include="..\..\..\Users\khs10\OneDrive\문서\카카오톡 받은 파일\ATEEZ (에이티즈)-03-BOUNCY (K-HOT CHILLI PEPPERS).mp3" />
-    <Media Include="..\..\..\Users\khs10\OneDrive\문서\카카오톡 받은 파일\NewJeans (뉴진스) - OMG 「Audio」.mp3" />
-    <Media Include="..\..\..\Users\khs10\OneDrive\문서\카카오톡 받은 파일\NIKI - Every Summertime.mp3" />
-    <Media Include="..\..\..\Users\khs10\OneDrive\문서\카카오톡 받은 파일\Troye Sivan - Rush (feat. PinkPantheress &amp; Hyunjin of Stray Kids   Official Audio).mp3" />
-    <Media Include="..\..\..\Users\khs10\OneDrive\문서\카카오톡 받은 파일\나상현씨밴드 - Rabbit Dance.mp3" />
+    <Media Include="audio\8TURN-02-TIC TAC.mp3" />
+    <Media Include="audio\ATEEZ (에이티즈)-03-BOUNCY (K-HOT CHILLI PEPPERS).mp3" />
+    <Media Include="audio\NewJeans (뉴진스) - OMG 「Audio」.mp3" />
+    <Media Include="audio\NIKI - Every Summertime.mp3" />
+    <Media Include="audio\Troye Sivan - Rush (feat. PinkPantheress &amp; Hyunjin of Stray Kids   Official Audio).mp3" />
+    <Media Include="audio\xikers(싸이커스)-05-ROCKSTAR.mp3" />
+    <Media Include="audio\나상현씨밴드 - Rabbit Dance.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
