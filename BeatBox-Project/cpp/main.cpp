@@ -21,7 +21,6 @@ int main() {
 		return -1;
 	
 	Object player;
-	player.sprite_.setFillColor(Color::White);
 	player.sprite_.setPosition(200, 300);
 	player.sprite_.setSize(Vector2f(100, 100));
 	player.sprite_.setTexture(&texture);
