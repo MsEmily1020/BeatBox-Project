@@ -18,12 +18,18 @@
     <ClCompile Include="cpp\main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="newjeans.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="image\player.png">
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="image\space.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="image\startbtn.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
