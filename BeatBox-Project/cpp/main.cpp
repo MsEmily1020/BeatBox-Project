@@ -13,6 +13,7 @@ public:
 	int height_;
 	RectangleShape sprite_;
 	Vector2i mouse_pos;
+	Texture texture;
 
 	void clickBtn() {
 		if (sprite_.getGlobalBounds().contains(mouse_pos.x, mouse_pos.y)) {
@@ -21,20 +22,20 @@ public:
 			}
 		}
 	}
+
+	Texture* setImage(string path) {
+		if (texture.loadFromFile("image/" + path + ".png")) return &texture;
+	}
 };
 
 int main() {
 	RenderWindow  window(VideoMode(WIDTH, HEIGHT), "MusicTokTok");
 	window.setFramerateLimit(15);
 
-	Texture texture;
-	if (!texture.loadFromFile("image/startbtn.png"))
-		return -1;
-
 	Button startBtn;
 	startBtn.sprite_.setPosition(130, 370);
 	startBtn.sprite_.setSize(Vector2f(300, 250));
-	startBtn.sprite_.setTexture(&texture);
+	startBtn.sprite_.setTexture(startBtn.setImage("startbtn"));
 	
 	Button explanBtn;
 	explanBtn.sprite_.setFillColor(Color::Blue);
