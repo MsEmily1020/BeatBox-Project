@@ -136,10 +136,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cpp\main.cpp" />
+    <ClCompile Include="newjeans.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="image\player.png" />
     <Image Include="image\space.png" />
+    <Image Include="image\startbtn.png" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="audio\8TURN-02-TIC TAC.mp3" />
