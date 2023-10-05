@@ -23,10 +23,11 @@ class Button : public Object {
 public:
 	Vector2i mouse_pos;
 
-	void clickBtn() {
+	void clickBtn(String str) {
 		if (sprite_.getGlobalBounds().contains(mouse_pos.x, mouse_pos.y)) {
 			if (Mouse::isButtonPressed(Mouse::Left)) {
-				cout << "1" << endl;
+				if (str == "start") cout << "1" << endl;
+				else cout << "2" << endl;
 			}
 		}
 	}
@@ -62,8 +63,8 @@ int main() {
 			startBtn.mouse_pos = Mouse::getPosition(window);
 			explainBtn.mouse_pos = Mouse::getPosition(window);
 
-			startBtn.clickBtn();
-			explainBtn.clickBtn();
+			startBtn.clickBtn("start");
+			explainBtn.clickBtn("explain");
 		}
 
 		window.clear();
