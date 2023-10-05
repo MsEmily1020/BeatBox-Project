@@ -7,6 +7,18 @@ using namespace sf;
 const int WIDTH = 900;
 const int HEIGHT = 600;
 
+class Background {
+public:
+	int width_;
+	int height_;
+	RectangleShape sprite_;
+	Texture texture;
+
+	Texture* setImage(string path) {
+		if (texture.loadFromFile("image/" + path + ".jpg")) return &texture;
+	}
+};
+
 class Button {
 public:
 	int width_;
@@ -31,6 +43,11 @@ public:
 int main() {
 	RenderWindow  window(VideoMode(WIDTH, HEIGHT), "MusicTokTok");
 	window.setFramerateLimit(15);
+
+	Background background;
+	background.sprite_.setPosition(0, 0);
+	background.sprite_.setSize(Vector2f(WIDTH, HEIGHT));
+	background.sprite_.setTexture(background.setImage("main_background"));
 
 	Button startBtn;
 	startBtn.sprite_.setPosition(120, 370);
@@ -59,6 +76,7 @@ int main() {
 
 		window.clear();
 
+		window.draw(background.sprite_);
 		window.draw(startBtn.sprite_);
 		window.draw(explainBtn.sprite_);
 

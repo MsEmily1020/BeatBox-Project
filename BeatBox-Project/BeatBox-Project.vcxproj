@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="image\explainbtn.png" />
+    <Image Include="image\main_background - 복사본.jpg" />
     <Image Include="image\player.png" />
     <Image Include="image\space.png" />
     <Image Include="image\startbtn.png" />
