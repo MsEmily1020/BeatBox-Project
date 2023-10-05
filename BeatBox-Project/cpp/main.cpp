@@ -33,14 +33,14 @@ int main() {
 	window.setFramerateLimit(15);
 
 	Button startBtn;
-	startBtn.sprite_.setPosition(130, 370);
-	startBtn.sprite_.setSize(Vector2f(300, 250));
+	startBtn.sprite_.setPosition(120, 370);
+	startBtn.sprite_.setSize(Vector2f(300, 260));
 	startBtn.sprite_.setTexture(startBtn.setImage("startbtn"));
 	
 	Button explainBtn;
+	explainBtn.sprite_.setPosition(500, 370);
+	explainBtn.sprite_.setSize(Vector2f(300, 260));
 	explainBtn.sprite_.setTexture(explainBtn.setImage("explainbtn"));
-	explainBtn.sprite_.setPosition(550, 450);
-	explainBtn.sprite_.setSize(Vector2f(200, 80));
 
 	while (window.isOpen())
 	{

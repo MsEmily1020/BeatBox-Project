@@ -142,6 +142,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="image\explainbtn.png" />
     <Image Include="image\player.png" />
     <Image Include="image\space.png" />
     <Image Include="image\startbtn.png" />
