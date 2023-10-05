@@ -7,24 +7,37 @@ using namespace sf;
 const int WIDTH = 900;
 const int HEIGHT = 600;
 
-class Button {
+class Object {
 public:
 	int width_;
 	int height_;
 	RectangleShape sprite_;
-	Vector2i mouse_pos;
 	Texture texture;
 
-	void clickBtn() {
-		if (sprite_.getGlobalBounds().contains(mouse_pos.x, mouse_pos.y)) {
-			if (Mouse::isButtonPressed(Mouse::Left)) {
-				cout << "1" << endl;
-			}
-		}
+	Object(int x, int y, int width, int height, String path) {
+		sprite_.setPosition(x, y);
+		sprite_.setSize(Vector2f(width, height));
+		sprite_.setTexture(setImage(path));
 	}
 
 	Texture* setImage(string path) {
-		if (texture.loadFromFile("image/" + path + ".png")) return &texture;
+		if (texture.loadFromFile("image/" + path)) return &texture;
+	}
+};
+
+class Button : public Object {
+public:
+	Vector2i mouse_pos;
+
+	Button(int x, int y, int width, int height, String path) : Object(x, y, width, height, path) {}
+
+	void clickBtn(String str) {
+		if (sprite_.getGlobalBounds().contains(mouse_pos.x, mouse_pos.y)) {
+			if (Mouse::isButtonPressed(Mouse::Left)) {
+				if (str == "start") cout << "1" << endl;
+				else cout << "2" << endl;
+			}
+		}
 	}
 };
 
@@ -32,15 +45,10 @@ int main() {
 	RenderWindow  window(VideoMode(WIDTH, HEIGHT), "MusicTokTok");
 	window.setFramerateLimit(15);
 
-	Button startBtn;
-	startBtn.sprite_.setPosition(130, 370);
-	startBtn.sprite_.setSize(Vector2f(300, 250));
-	startBtn.sprite_.setTexture(startBtn.setImage("startbtn"));
+	Object background = Object(0, 0, WIDTH, HEIGHT, "main_background.jpg");
 	
-	Button explanBtn;
-	explanBtn.sprite_.setFillColor(Color::Blue);
-	explanBtn.sprite_.setPosition(550, 450);
-	explanBtn.sprite_.setSize(Vector2f(200, 80));
+	Button startBtn = Button(120, 370, 300, 260, "startbtn.png");
+	Button explainBtn = Button(500, 370, 300, 260, "explainbtn.png");
 
 	while (window.isOpen())
 	{
@@ -51,16 +59,17 @@ int main() {
 				window.close();
 
 			startBtn.mouse_pos = Mouse::getPosition(window);
-			explanBtn.mouse_pos = Mouse::getPosition(window);
+			explainBtn.mouse_pos = Mouse::getPosition(window);
 
-			startBtn.clickBtn();
-			explanBtn.clickBtn();
+			startBtn.clickBtn("start");
+			explainBtn.clickBtn("explain");
 		}
 
 		window.clear();
 
+		window.draw(background.sprite_);
 		window.draw(startBtn.sprite_);
-		window.draw(explanBtn.sprite_);
+		window.draw(explainBtn.sprite_);
 
 		window.display();
 	}
