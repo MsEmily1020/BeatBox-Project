@@ -37,10 +37,10 @@ int main() {
 	startBtn.sprite_.setSize(Vector2f(300, 250));
 	startBtn.sprite_.setTexture(startBtn.setImage("startbtn"));
 	
-	Button explanBtn;
-	explanBtn.sprite_.setFillColor(Color::Blue);
-	explanBtn.sprite_.setPosition(550, 450);
-	explanBtn.sprite_.setSize(Vector2f(200, 80));
+	Button explainBtn;
+	explainBtn.sprite_.setTexture(explainBtn.setImage("explainbtn"));
+	explainBtn.sprite_.setPosition(550, 450);
+	explainBtn.sprite_.setSize(Vector2f(200, 80));
 
 	while (window.isOpen())
 	{
@@ -51,16 +51,16 @@ int main() {
 				window.close();
 
 			startBtn.mouse_pos = Mouse::getPosition(window);
-			explanBtn.mouse_pos = Mouse::getPosition(window);
+			explainBtn.mouse_pos = Mouse::getPosition(window);
 
 			startBtn.clickBtn();
-			explanBtn.clickBtn();
+			explainBtn.clickBtn();
 		}
 
 		window.clear();
 
 		window.draw(startBtn.sprite_);
-		window.draw(explanBtn.sprite_);
+		window.draw(explainBtn.sprite_);
 
 		window.display();
 	}
