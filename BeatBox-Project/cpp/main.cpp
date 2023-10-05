@@ -7,7 +7,7 @@ using namespace sf;
 const int WIDTH = 900;
 const int HEIGHT = 600;
 
-class Background {
+class Object {
 public:
 	int width_;
 	int height_;
@@ -15,17 +15,13 @@ public:
 	Texture texture;
 
 	Texture* setImage(string path) {
-		if (texture.loadFromFile("image/" + path + ".jpg")) return &texture;
+		if (texture.loadFromFile("image/" + path)) return &texture;
 	}
 };
 
-class Button {
+class Button : public Object {
 public:
-	int width_;
-	int height_;
-	RectangleShape sprite_;
 	Vector2i mouse_pos;
-	Texture texture;
 
 	void clickBtn() {
 		if (sprite_.getGlobalBounds().contains(mouse_pos.x, mouse_pos.y)) {
@@ -34,30 +30,26 @@ public:
 			}
 		}
 	}
-
-	Texture* setImage(string path) {
-		if (texture.loadFromFile("image/" + path + ".png")) return &texture;
-	}
 };
 
 int main() {
 	RenderWindow  window(VideoMode(WIDTH, HEIGHT), "MusicTokTok");
 	window.setFramerateLimit(15);
 
-	Background background;
+	Object background;
 	background.sprite_.setPosition(0, 0);
 	background.sprite_.setSize(Vector2f(WIDTH, HEIGHT));
-	background.sprite_.setTexture(background.setImage("main_background"));
+	background.sprite_.setTexture(background.setImage("main_background.jpg"));
 
 	Button startBtn;
 	startBtn.sprite_.setPosition(120, 370);
 	startBtn.sprite_.setSize(Vector2f(300, 260));
-	startBtn.sprite_.setTexture(startBtn.setImage("startbtn"));
+	startBtn.sprite_.setTexture(startBtn.setImage("startbtn.png"));
 	
 	Button explainBtn;
 	explainBtn.sprite_.setPosition(500, 370);
 	explainBtn.sprite_.setSize(Vector2f(300, 260));
-	explainBtn.sprite_.setTexture(explainBtn.setImage("explainbtn"));
+	explainBtn.sprite_.setTexture(explainBtn.setImage("explainbtn.png"));
 
 	while (window.isOpen())
 	{
