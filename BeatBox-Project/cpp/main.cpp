@@ -14,6 +14,12 @@ public:
 	RectangleShape sprite_;
 	Texture texture;
 
+	Object(int x, int y, int width, int height, String path) {
+		sprite_.setPosition(x, y);
+		sprite_.setSize(Vector2f(width, height));
+		sprite_.setTexture(setImage(path));
+	}
+
 	Texture* setImage(string path) {
 		if (texture.loadFromFile("image/" + path)) return &texture;
 	}
@@ -22,6 +28,8 @@ public:
 class Button : public Object {
 public:
 	Vector2i mouse_pos;
+
+	Button(int x, int y, int width, int height, String path) : Object(x, y, width, height, path) {}
 
 	void clickBtn(String str) {
 		if (sprite_.getGlobalBounds().contains(mouse_pos.x, mouse_pos.y)) {
@@ -37,20 +45,10 @@ int main() {
 	RenderWindow  window(VideoMode(WIDTH, HEIGHT), "MusicTokTok");
 	window.setFramerateLimit(15);
 
-	Object background;
-	background.sprite_.setPosition(0, 0);
-	background.sprite_.setSize(Vector2f(WIDTH, HEIGHT));
-	background.sprite_.setTexture(background.setImage("main_background.jpg"));
-
-	Button startBtn;
-	startBtn.sprite_.setPosition(120, 370);
-	startBtn.sprite_.setSize(Vector2f(300, 260));
-	startBtn.sprite_.setTexture(startBtn.setImage("startbtn.png"));
+	Object background = Object(0, 0, WIDTH, HEIGHT, "main_background.jpg");
 	
-	Button explainBtn;
-	explainBtn.sprite_.setPosition(500, 370);
-	explainBtn.sprite_.setSize(Vector2f(300, 260));
-	explainBtn.sprite_.setTexture(explainBtn.setImage("explainbtn.png"));
+	Button startBtn = Button(120, 370, 300, 260, "startbtn.png");
+	Button explainBtn = Button(500, 370, 300, 260, "explainbtn.png");
 
 	while (window.isOpen())
 	{
