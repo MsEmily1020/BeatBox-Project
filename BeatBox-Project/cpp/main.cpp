@@ -1,11 +1,13 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 using namespace std;
 using namespace sf;
 
 const int WIDTH = 900;
 const int HEIGHT = 600;
+int isNext = 0;
 
 class Object {
 public:
@@ -27,15 +29,15 @@ public:
 
 class Button : public Object {
 public:
-	Vector2i mouse_pos;
+	Vector2i mousePos;
 
 	Button(int x, int y, int width, int height, String path) : Object(x, y, width, height, path) {}
 
 	void clickBtn(String str) {
-		if (sprite_.getGlobalBounds().contains(mouse_pos.x, mouse_pos.y)) {
+		if (sprite_.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
 			if (Mouse::isButtonPressed(Mouse::Left)) {
-				if (str == "start") cout << "1" << endl;
-				else cout << "2" << endl;
+				if (str == "start") isNext = 1;
+				else isNext = 2;
 			}
 		}
 	}
@@ -49,6 +51,10 @@ int main() {
 	
 	Button startBtn = Button(120, 370, 300, 260, "startbtn.png");
 	Button explainBtn = Button(500, 370, 300, 260, "explainbtn.png");
+	
+	Music music;
+	music.openFromFile("audio/happy.wav");
+	music.play();
 
 	while (window.isOpen())
 	{
@@ -58,11 +64,12 @@ int main() {
 			if (e.type == Event::Closed)
 				window.close();
 
-			startBtn.mouse_pos = Mouse::getPosition(window);
-			explainBtn.mouse_pos = Mouse::getPosition(window);
+			startBtn.mousePos = Mouse::getPosition(window);
+			explainBtn.mousePos = Mouse::getPosition(window);
 
 			startBtn.clickBtn("start");
 			explainBtn.clickBtn("explain");
+
 		}
 
 		window.clear();
@@ -73,5 +80,6 @@ int main() {
 
 		window.display();
 	}
+
 	return 0;
 }
