@@ -10,30 +10,16 @@ using namespace sf;
 
 const int WIDTH = 900;
 const int HEIGHT = 600;
-int isNext = 0;
 
-void Button::clickBtn(String str) {
-	if (sprite_.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-		if (Mouse::isButtonPressed(Mouse::Left)) {
-			if (str == "start") isNext = 1;
-			else isNext = 2;
-		}
-	}
-}
-
-int main() {
-	RenderWindow window(VideoMode(WIDTH, HEIGHT), "MusicTokTok");
+void Main::run(RenderWindow& window) {
+	window.create(VideoMode(WIDTH, HEIGHT), "MusicTokTok");
 	window.setFramerateLimit(15);
 
 	Object background = Object(0, 0, WIDTH, HEIGHT, "main_background.jpg");
 	Object logo = Object(150, 100, 600, 300, "logo.png");
-	
+
 	Button startBtn = Button(120, 370, 300, 260, "startbtn.png");
 	Button explainBtn = Button(500, 370, 300, 260, "explainbtn.png");
-	
-	Music music;
-	music.openFromFile("audio/happy.wav");
-	music.play();
 
 	while (window.isOpen())
 	{
@@ -49,8 +35,8 @@ int main() {
 			startBtn.clickBtn("start");
 			explainBtn.clickBtn("explain");
 
-			if (isNext == 1) Select().run(window);
-			else if (isNext == 2) Menu().run(window);
+			if (startBtn.getNext() == 1) Select().run(window);
+			else if (explainBtn.getNext() == 2) Menu().run(window);
 		}
 
 		window.clear();
@@ -62,6 +48,16 @@ int main() {
 
 		window.display();
 	}
+}
+
+int main() {
+	RenderWindow window;
+	
+	Music music;
+	music.openFromFile("audio/happy.wav");
+	music.play();
+	
+	Main().run(window);
 
 	return 0;
 }
