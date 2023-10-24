@@ -26,10 +26,20 @@ public:
 class Button : public Object {
 public:
 	Vector2i mousePos;
+	int isNext = 0;
 
 	Button(int x, int y, int width, int height, String path) : Object(x, y, width, height, path) {}
 
-	void clickBtn(String str);
+	void clickBtn(String str) {
+		if (sprite_.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+			if (Mouse::isButtonPressed(Mouse::Left)) {
+				if (str == "start") isNext = 1;
+				else isNext = 2;
+			}
+		}
+	}
+
+	int getNext() { return isNext; }
 };
 
 class Main {
