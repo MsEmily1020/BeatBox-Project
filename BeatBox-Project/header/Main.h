@@ -47,6 +47,41 @@ public:
 	int getNext() { return isNext; }
 };
 
+class TextString {
+public:
+	Text text;
+	Font font;
+
+	TextString(int x, int y, int size, String content) {
+		text.setPosition(Vector2f(x, y));
+		text.setCharacterSize(size);
+		text.setString(content);
+		font.loadFromFile("C:\\windows\\Fonts\\H2GTRE.ttf");
+		text.setFont(font);
+		text.setFillColor(Color::Black);
+
+		if (x == 0) {
+			FloatRect textRect = text.getLocalBounds();
+			text.setOrigin(textRect.left + textRect.width / 2.0f,
+				textRect.top + textRect.height / 2.0f);
+			text.setPosition(Vector2f(920 / 2.0f, y));
+		}
+	}
+
+	void setText(int x, int y, String content) { 
+		text.setString(content);
+
+		text.setPosition(Vector2f(x, y));
+
+		if (x == 0) {
+			FloatRect textRect = text.getLocalBounds();
+			text.setOrigin(textRect.left + textRect.width / 2.0f,
+				textRect.top + textRect.height / 2.0f);
+			text.setPosition(Vector2f(920 / 2.0f, y));
+		}
+	}
+};
+
 class Main {
 public: 
 	void run(RenderWindow& window);
