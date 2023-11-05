@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 using namespace std;
 using namespace sf;
@@ -18,7 +19,7 @@ public:
 		sprite_.setTexture(setImage(path));
 	}
 
-	Texture* setImage(string path) {
+	Texture* setImage(String path) {
 		if (texture.loadFromFile("image/" + path)) return &texture;
 	}
 };
