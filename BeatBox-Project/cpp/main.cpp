@@ -8,6 +8,8 @@
 using namespace std;
 using namespace sf;
 
+Music music;
+
 const int WIDTH = 900;
 const int HEIGHT = 600;
 
@@ -35,7 +37,10 @@ void Main::run(RenderWindow& window) {
 			startBtn.clickBtn("start");
 			explainBtn.clickBtn("explain");
 
-			if (startBtn.getNext() == 1) Select().run(window);
+			if (startBtn.getNext() == 1) {
+				music.stop();
+				Select().run(window);
+			}
 			else if (explainBtn.getNext() == 2) Menu().run(window);
 		}
 
@@ -53,7 +58,6 @@ void Main::run(RenderWindow& window) {
 int main() {
 	RenderWindow window;
 	
-	Music music;
 	music.openFromFile("audio/happy.wav");
 	music.play();
 	

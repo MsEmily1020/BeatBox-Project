@@ -29,5 +29,38 @@ C:\private\BeatBox-Project\BeatBox-Project\header\Main.h(34,50): warning C4244: 
           [
               T=float
           ]
+  Select.cpp
+C:\private\BeatBox-Project\BeatBox-Project\header\Main.h(16,26): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\private\BeatBox-Project\BeatBox-Project\header\Main.h(16,23): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\private\BeatBox-Project\BeatBox-Project\header\Main.h(17,35): warning C4244: '인수': 'int'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+C:\private\BeatBox-Project\BeatBox-Project\header\Main.h(17,28): warning C4244: '인수': 'int'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+C:\private\BeatBox-Project\BeatBox-Project\header\Main.h(34,62): warning C4244: '인수': 'T'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\private\BeatBox-Project\BeatBox-Project\header\Main.h(34,50): warning C4244: '인수': 'T'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+  코드를 생성하고 있습니다...
+C:\private\BeatBox-Project\BeatBox-Project\header\Main.h(23): warning C4715: 'Object::setImage': 모든 제어 경로에서 값을 반환하지는 않습니다.
 C:\private\BeatBox-Project\BeatBox-Project\header\Main.h(23): warning C4715: 'Object::setImage': 모든 제어 경로에서 값을 반환하지는 않습니다.
   BeatBox-Project.vcxproj -> C:\private\BeatBox-Project\Debug\BeatBox-Project.exe
