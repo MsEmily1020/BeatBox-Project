@@ -1,14 +1,10 @@
-#include "Main.h"
 #include "Menu.h"
-
-using namespace std;
 
 const int WIDTH = 900;
 const int HEIGHT = 600;
 
 void Menu::run(RenderWindow& window) {
 	window.create(VideoMode(WIDTH, HEIGHT), "menu");
-	window.setFramerateLimit(15);
 
 	Button startBtn = Button(120, 370, 300, 260, "startbtn.png");
 

@@ -1,8 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-
-using namespace sf;
+#include "Main.h"
 
 class Menu {
 public:

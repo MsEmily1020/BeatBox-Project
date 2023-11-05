@@ -1,5 +1,5 @@
 #include "Select.h"
-#include "Main.h"
+#include "Game.h"
 
 Music music1;
 String song[] = { "TIC-TAC", "BOUNCY", "Every Summertime", "OMG", "Rush", "ROCKSTAR", "Rabbit Dance"};
@@ -32,13 +32,15 @@ void Select::run(RenderWindow& window) {
 
 			leftBtn.mousePos = Mouse::getPosition(window);
 			rightBtn.mousePos = Mouse::getPosition(window);
+			gameBtn.mousePos = Mouse::getPosition(window);
 
 			leftBtn.clickBtn("left");
 			rightBtn.clickBtn("right");
+			gameBtn.clickBtn("game");
 
 			if (leftBtn.getNext() == 3) nextSong(-1);
-
 			else if (rightBtn.getNext() == 4) nextSong(1);
+			else if (gameBtn.getNext() == 5) Game().run(window);
 		}
 
 		window.clear();
