@@ -1,12 +1,9 @@
 ﻿#pragma once
 
-#include <SFML/Graphics.hpp>
-
-using namespace sf;
+#include "Main.h"
 
 class Select {
 public :
 	void run(RenderWindow& window);
-
 	void nextSong(int song);
 };

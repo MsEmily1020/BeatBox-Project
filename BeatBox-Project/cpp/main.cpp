@@ -1,12 +1,5 @@
-#include <iostream>
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 #include "Select.h"
-#include "Main.h"
 #include "Menu.h"
-
-using namespace std;
-using namespace sf;
 
 Music music;
 
@@ -15,7 +8,6 @@ const int HEIGHT = 600;
 
 void Main::run(RenderWindow& window) {
 	window.create(VideoMode(WIDTH, HEIGHT), "MusicTokTok");
-	window.setFramerateLimit(15);
 
 	Object background = Object(0, 0, WIDTH, HEIGHT, "main_background.jpg");
 	Object logo = Object(150, 100, 600, 300, "logo.png");
