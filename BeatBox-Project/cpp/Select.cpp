@@ -2,6 +2,8 @@
 #include "Main.h"
 
 Music music1;
+String song[] = { "TIC-TAC", "BOUNCY", "Every Summertime", "OMG", "Rush", "ROCKSTAR", "Rabbit Dance"};
+TextString title = TextString(0, 100, 30, song[0]);
 Button leftBtn = Button(50, 170, 200, 200, "left.png");
 Button rightBtn = Button(650, 170, 200, 200, "right.png");
 Object album = Object(320, 160, 280, 280, "1.png");
@@ -46,19 +48,22 @@ void Select::run(RenderWindow& window) {
 		window.draw(leftBtn.sprite_);
 		window.draw(rightBtn.sprite_);
 		window.draw(album.sprite_);
+		window.draw(title.text);
 
 		window.display();
 	}
 }
 
-void Select::nextSong(int song) {
-	if (nextAlbum + song < 1 || nextAlbum + song > 7) {
+void Select::nextSong(int next) {
+	if (nextAlbum + next < 1 || nextAlbum + next > 7) {
 		leftBtn.isNext = 0;
 		rightBtn.isNext = 0;
 		return;
 	}
 
-	nextAlbum += song;
+	nextAlbum += next;
+
+	title.setText(0, 100, song[nextAlbum - 1]);
 
 	album.sprite_.setTexture(album.setImage(to_string(nextAlbum) + ".png"));
 	rightBtn.setNext(0);
