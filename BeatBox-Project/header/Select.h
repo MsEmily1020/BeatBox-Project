@@ -7,4 +7,6 @@ using namespace sf;
 class Select {
 public :
 	void run(RenderWindow& window);
+
+	void nextSong(int song);
 };

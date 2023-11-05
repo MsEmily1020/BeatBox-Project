@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 using namespace std;
 using namespace sf;
@@ -18,7 +19,7 @@ public:
 		sprite_.setTexture(setImage(path));
 	}
 
-	Texture* setImage(string path) {
+	Texture* setImage(String path) {
 		if (texture.loadFromFile("image/" + path)) return &texture;
 	}
 };
@@ -34,10 +35,14 @@ public:
 		if (sprite_.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
 			if (Mouse::isButtonPressed(Mouse::Left)) {
 				if (str == "start") isNext = 1;
-				else isNext = 2;
+				else if (str == "explain") isNext = 2;
+				else if (str == "left") isNext = 3;
+				else if (str == "right") isNext = 4;
 			}
 		}
 	}
+
+	void setNext(int next) { isNext = next; }
 
 	int getNext() { return isNext; }
 };
