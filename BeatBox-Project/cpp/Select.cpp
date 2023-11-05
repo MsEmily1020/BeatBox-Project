@@ -40,7 +40,10 @@ void Select::run(RenderWindow& window) {
 
 			if (leftBtn.getNext() == 3) nextSong(-1);
 			else if (rightBtn.getNext() == 4) nextSong(1);
-			else if (gameBtn.getNext() == 5) Game().run(window);
+			else if (gameBtn.getNext() == 5) {
+				playSong();
+				Game().run(window);
+			}
 		}
 
 		window.clear();
@@ -69,6 +72,10 @@ void Select::nextSong(int next) {
 
 	album.sprite_.setTexture(album.setImage(to_string(nextAlbum) + ".png"));
 	rightBtn.setNext(0);
+	playSong();
+}
+
+void Select::playSong() {
 	music1.stop();
 	music1.openFromFile("audio/" + to_string(nextAlbum) + ".wav");
 	music1.play();
