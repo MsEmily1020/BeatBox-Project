@@ -39,6 +39,7 @@ public:
 				else if (str == "left") isNext = 3;
 				else if (str == "right") isNext = 4;
 				else if (str == "game") isNext = 5;
+				else if (str == "main") isNext = 6;
 			}
 		}
 	}

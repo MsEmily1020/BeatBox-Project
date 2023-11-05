@@ -6,7 +6,7 @@ const int HEIGHT = 600;
 void Menu::run(RenderWindow& window) {
 	window.create(VideoMode(WIDTH, HEIGHT), "menu");
 
-	Button startBtn = Button(120, 370, 300, 260, "startbtn.png");
+	Button mainBtn = Button(330, 410, 250, 200, "startbtn.png");
 
 	while (window.isOpen())
 	{
@@ -16,17 +16,17 @@ void Menu::run(RenderWindow& window) {
 			if (e.type == Event::Closed)
 				window.close();
 
-			startBtn.mousePos = Mouse::getPosition(window);
+			mainBtn.mousePos = Mouse::getPosition(window);
 
-			startBtn.clickBtn("start");
-			if (startBtn.getNext() == 1) {
+			mainBtn.clickBtn("main");
+			if (mainBtn.getNext() == 6) {
 				Main().run(window);
 			}
 		}
 
 		window.clear();
 
-		window.draw(startBtn.sprite_);
+		window.draw(mainBtn.sprite_);
 
 		window.display();
 	}
