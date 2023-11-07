@@ -71,6 +71,7 @@ void Select::nextSong(int next) {
 	title.setText(0, 100, song[nextAlbum - 1]);
 
 	album.sprite_.setTexture(album.setImage(to_string(nextAlbum) + ".png"));
+	leftBtn.setNext(0);
 	rightBtn.setNext(0);
 	playSong();
 }
