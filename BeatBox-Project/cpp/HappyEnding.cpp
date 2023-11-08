@@ -1,83 +1,85 @@
-#include "Select.h"
-#include "Game.h"
+#include <iostream>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+using namespace std;
+using namespace sf;
 
-Music music1;
-String song[] = { "TIC-TAC", "BOUNCY", "Every Summertime", "OMG", "Rush", "ROCKSTAR", "Rabbit Dance"};
-TextString title = TextString(0, 100, 30, song[0]);
-Button leftBtn = Button(50, 170, 200, 200, "left.png");
-Button rightBtn = Button(650, 170, 200, 200, "right.png");
-Object album = Object(320, 160, 280, 280, "1.png");
+const int WIDTH = 1100;
+const int HEIGHT = 800;
 
-int nextAlbum = 1;
+/*해야할것
+1. 곡 선택
+2. 버튼 누르면 화면 전환
+3. 곡마다 리듬 */
 
-const int WIDTH = 900;
-const int HEIGHT = 600;
+//추가만 하기
+class Object {
+public:
+	int width_;
+	int height_;
+	RectangleShape sprite_;
+	Texture texture;
 
-void Select::run(RenderWindow& window) {
-	window.create(VideoMode(WIDTH, HEIGHT), "Choose Level");
+	Texture* setImage(string path) {
+		if (texture.loadFromFile("image/" + path)) return &texture;
+	}
+};
 
-	Object background = Object(0, 0, WIDTH, HEIGHT, "select_background.jpg");
-	Button gameBtn = Button(330, 410, 250, 200, "startbtn.png");
 
-	music1.openFromFile("audio/1.wav");
-	music1.play();
+//릿센 버튼 만들기
+class Button : public Object {
+public:
+	Vector2i mouse_pos;
+
+	void clickBtn() {
+		if (sprite_.getGlobalBounds().contains(mouse_pos.x, mouse_pos.y)) {
+			if (Mouse::isButtonPressed(Mouse::Left)) {
+
+			}
+		}
+	}
+};
+//TODO : 파일 분할 , 이름 똑같이 ! 
+
+int main() {
+	RenderWindow  window(VideoMode(WIDTH, HEIGHT), "happyend");
+	window.setFramerateLimit(15);
+	//배경
+	Object background;
+	background.sprite_.setPosition(0, 0);
+	background.sprite_.setSize(Vector2f(WIDTH, HEIGHT));
+	background.sprite_.setTexture(background.setImage("happyending.png"));//이름 바꾸기 
+
+
+	Music music;
+	music.openFromFile("audio/happyending.wav");
+	music.play();
+
+
+
 
 	while (window.isOpen())
 	{
 		Event e;
 		while (window.pollEvent(e))
 		{
-			if (e.type == Event::Closed)
+			if (e.type == Event::Closed) {
 				window.close();
 
-			leftBtn.mousePos = Mouse::getPosition(window);
-			rightBtn.mousePos = Mouse::getPosition(window);
-			gameBtn.mousePos = Mouse::getPosition(window);
-
-			leftBtn.clickBtn("left");
-			rightBtn.clickBtn("right");
-			gameBtn.clickBtn("game");
-
-			if (leftBtn.getNext() == 3) nextSong(-1);
-			else if (rightBtn.getNext() == 4) nextSong(1);
-			else if (gameBtn.getNext() == 5) {
-				playSong();
-				Game().run(window);
 			}
+
+
+
+
+
 		}
 
 		window.clear();
 
 		window.draw(background.sprite_);
-		window.draw(gameBtn.sprite_);
-		window.draw(leftBtn.sprite_);
-		window.draw(rightBtn.sprite_);
-		window.draw(album.sprite_);
-		window.draw(title.text);
+
 
 		window.display();
 	}
-}
-
-void Select::nextSong(int next) {
-	if (nextAlbum + next < 1 || nextAlbum + next > 7) {
-		leftBtn.isNext = 0;
-		rightBtn.isNext = 0;
-		return;
-	}
-
-	nextAlbum += next;
-
-	title.setText(0, 100, song[nextAlbum - 1]);
-
-	album.sprite_.setTexture(album.setImage(to_string(nextAlbum) + ".png"));
-	leftBtn.setNext(0);
-	rightBtn.setNext(0);
-	playSong();
-}
-
-void Select::playSong() {
-	music1.stop();
-	music1.openFromFile("audio/" + to_string(nextAlbum) + ".wav");
-	music1.play();
+	return 0;
 }

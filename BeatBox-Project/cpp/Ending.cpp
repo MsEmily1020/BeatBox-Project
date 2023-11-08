@@ -1,59 +1,84 @@
-#include "Select.h"
-#include "Menu.h"
+#include <iostream>
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+using namespace std;
+using namespace sf;
 
-Music music;
+const int WIDTH = 1100;
+const int HEIGHT = 800;
+//추가만 하기
+class Object {
+public:
+	int width_;
+	int height_;
+	RectangleShape sprite_;
+	Texture texture;
 
-const int WIDTH = 900;
-const int HEIGHT = 600;
+	Texture* setImage(string path) {
+		if (texture.loadFromFile("image/" + path)) return &texture;
+	}
+};
 
-void Main::run(RenderWindow& window) {
-	window.create(VideoMode(WIDTH, HEIGHT), "MusicTokTok");
 
-	Object background = Object(0, 0, WIDTH, HEIGHT, "main_background.jpg");
-	Object logo = Object(150, 100, 600, 300, "logo.png");
+//릿센 버튼 만들기
+class Button : public Object {
+public:
+	Vector2i mouse_pos;
 
-	Button startBtn = Button(120, 370, 300, 260, "startbtn.png");
-	Button explainBtn = Button(500, 370, 300, 260, "explainbtn.png");
+	void clickBtn() {
+		if (sprite_.getGlobalBounds().contains(mouse_pos.x, mouse_pos.y)) {
+			if (Mouse::isButtonPressed(Mouse::Left)) {
+
+			}
+		}
+	}
+};
+//TODO : 파일 분할 , 이름 똑같이 ! 
+
+int main() {
+	RenderWindow  window(VideoMode(WIDTH, HEIGHT), "end");
+	window.setFramerateLimit(15);
+	//배경
+	Object background;
+	background.sprite_.setPosition(0, 0);
+	background.sprite_.setSize(Vector2f(WIDTH, HEIGHT));
+	background.sprite_.setTexture(background.setImage("ending_bg.jpg"));//이름 바꾸기 
+	//버튼
+	Button restartBtn;
+	restartBtn.sprite_.setPosition(430, 550);//위치
+	restartBtn.sprite_.setSize(Vector2f(250, 210));//사이즈
+	restartBtn.sprite_.setTexture(restartBtn.setImage("restartbtn.png"));//이것도
+
+	Music music;
+	music.openFromFile("audio/gameover.ogg");
+	music.play();
+
+
+
 
 	while (window.isOpen())
 	{
 		Event e;
 		while (window.pollEvent(e))
 		{
-			if (e.type == Event::Closed)
+			if (e.type == Event::Closed) {
 				window.close();
 
-			startBtn.mousePos = Mouse::getPosition(window);
-			explainBtn.mousePos = Mouse::getPosition(window);
-
-			startBtn.clickBtn("start");
-			explainBtn.clickBtn("explain");
-
-			if (startBtn.getNext() == 1) {
-				music.stop();
-				Select().run(window);
 			}
-			else if (explainBtn.getNext() == 2) Menu().run(window);
+
+
+			restartBtn.mouse_pos = Mouse::getPosition(window);
+			restartBtn.clickBtn();
+
+
 		}
 
 		window.clear();
 
 		window.draw(background.sprite_);
-		window.draw(logo.sprite_);
-		window.draw(startBtn.sprite_);
-		window.draw(explainBtn.sprite_);
+		window.draw(restartBtn.sprite_);
 
 		window.display();
 	}
-}
-
-int main() {
-	RenderWindow window;
-	
-	music.openFromFile("audio/happy.wav");
-	music.play();
-	
-	Main().run(window);
-
 	return 0;
 }
