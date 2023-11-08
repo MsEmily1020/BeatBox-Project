@@ -143,7 +143,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="cpp\Ending.cpp" />
     <ClCompile Include="cpp\Game.cpp" />
+    <ClCompile Include="cpp\HappyEnding.cpp" />
+    <ClCompile Include="cpp\LevelUp.cpp" />
     <ClCompile Include="cpp\Main.cpp" />
     <ClCompile Include="cpp\Menu.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
