@@ -2,7 +2,7 @@
 #include "Game.h"
 
 Music music1;
-String song[] = { "TIC-TAC", "BOUNCY", "Every Summertime", "OMG", "Rush", "ROCKSTAR", "Rabbit Dance"};
+String song[] = { "Antifreeze", "Steal The Show", "Every Summertime", "OMG", "Rush", "All I Want For Christmas Is You", "Rabbit Dance" };
 TextString title = TextString(0, 100, 30, song[0]);
 Button leftBtn = Button(50, 170, 200, 200, "left.png");
 Button rightBtn = Button(650, 170, 200, 200, "right.png");

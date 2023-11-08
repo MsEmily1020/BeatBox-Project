@@ -49,10 +49,10 @@ void Main::run(RenderWindow& window) {
 
 int main() {
 	RenderWindow window;
-	
+
 	music.openFromFile("audio/happy.wav");
 	music.play();
-	
+
 	Main().run(window);
 
 	return 0;
