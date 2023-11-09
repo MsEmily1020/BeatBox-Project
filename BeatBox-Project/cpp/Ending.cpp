@@ -3,12 +3,12 @@
 void Ending::run(RenderWindow& window) {
 	window.create(VideoMode(WIDTH, HEIGHT), "end");
 
-	Object background = Object(0, 0, WIDTH, HEIGHT, "endingbtn.jpg");
+	Object background = Object(0, 0, WIDTH, HEIGHT, "ending_background.jpg");
 	Button restartBtn = Button(430, 550, 250, 210, "restartbtn.png");
 
 	Music music;
 	music.openFromFile("audio/gameover.wav");
-	music.play();
+	music.play(); 
 
 	while (window.isOpen())
 	{
