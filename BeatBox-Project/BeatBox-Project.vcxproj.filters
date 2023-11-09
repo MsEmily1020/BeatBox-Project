@@ -24,9 +24,12 @@
     <ClCompile Include="cpp\Game.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="cpp\Main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+=======
+>>>>>>> e349c8aeb83699b12b5806a6eeb4b2086f1f7fb1
     <ClCompile Include="cpp\Ending.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>

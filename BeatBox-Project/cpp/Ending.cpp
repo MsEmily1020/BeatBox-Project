@@ -3,11 +3,11 @@
 void Ending::run(RenderWindow& window) {
 	window.create(VideoMode(WIDTH, HEIGHT), "end");
 
-	Object background = Object(0, 0, WIDTH, HEIGHT, "ending_bg.jpg");
+	Object background = Object(0, 0, WIDTH, HEIGHT, "endingbtn.jpg");
 	Button restartBtn = Button(430, 550, 250, 210, "restartbtn.png");
 
 	Music music;
-	music.openFromFile("audio/gameover.ogg");
+	music.openFromFile("audio/gameover.wav");
 	music.play();
 
 	while (window.isOpen())
@@ -15,13 +15,16 @@ void Ending::run(RenderWindow& window) {
 		Event e;
 		while (window.pollEvent(e))
 		{
-			if (e.type == Event::Closed)
+			if (e.type == Event::Closed) {
 				window.close();
+
+			}
 
 			restartBtn.mousePos = Mouse::getPosition(window);
 			restartBtn.clickBtn("main");
 
 			if (restartBtn.getNext() == 6) Main().run(window);
+
 		}
 
 		window.clear();
