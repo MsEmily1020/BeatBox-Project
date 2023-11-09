@@ -10,9 +10,6 @@ Object album = Object(320, 160, 280, 280, "1.png");
 
 int nextAlbum = 1;
 
-const int WIDTH = 900;
-const int HEIGHT = 600;
-
 void Select::run(RenderWindow& window) {
 	window.create(VideoMode(WIDTH, HEIGHT), "Choose Level");
 
@@ -60,10 +57,14 @@ void Select::run(RenderWindow& window) {
 }
 
 void Select::nextSong(int next) {
-	if (nextAlbum + next < 1 || nextAlbum + next > 7) {
+	if (nextAlbum + next < 1) {
 		leftBtn.isNext = 0;
+		nextAlbum = 8;
+	}
+
+	else if (nextAlbum + next > 7) {
 		rightBtn.isNext = 0;
-		return;
+		nextAlbum = 0;
 	}
 
 	nextAlbum += next;

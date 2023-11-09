@@ -1,19 +1,14 @@
-#include "Select.h"
-#include "Menu.h"
+#include "Ending.h"
 
-Music music;
+void Ending::run(RenderWindow& window) {
+	window.create(VideoMode(WIDTH, HEIGHT), "end");
 
-const int WIDTH = 900;
-const int HEIGHT = 600;
+	Object background = Object(0, 0, WIDTH, HEIGHT, "ending_bg.jpg");
+	Button restartBtn = Button(430, 550, 250, 210, "restartbtn.png");
 
-void Main::run(RenderWindow& window) {
-	window.create(VideoMode(WIDTH, HEIGHT), "MusicTokTok");
-
-	Object background = Object(0, 0, WIDTH, HEIGHT, "main_background.jpg");
-	Object logo = Object(150, 100, 600, 300, "logo.png");
-
-	Button startBtn = Button(120, 370, 300, 260, "startbtn.png");
-	Button explainBtn = Button(500, 370, 300, 260, "explainbtn.png");
+	Music music;
+	music.openFromFile("audio/gameover.ogg");
+	music.play();
 
 	while (window.isOpen())
 	{
@@ -23,37 +18,17 @@ void Main::run(RenderWindow& window) {
 			if (e.type == Event::Closed)
 				window.close();
 
-			startBtn.mousePos = Mouse::getPosition(window);
-			explainBtn.mousePos = Mouse::getPosition(window);
+			restartBtn.mousePos = Mouse::getPosition(window);
+			restartBtn.clickBtn("main");
 
-			startBtn.clickBtn("start");
-			explainBtn.clickBtn("explain");
-
-			if (startBtn.getNext() == 1) {
-				music.stop();
-				Select().run(window);
-			}
-			else if (explainBtn.getNext() == 2) Menu().run(window);
+			if (restartBtn.getNext() == 6) Main().run(window);
 		}
 
 		window.clear();
 
 		window.draw(background.sprite_);
-		window.draw(logo.sprite_);
-		window.draw(startBtn.sprite_);
-		window.draw(explainBtn.sprite_);
+		window.draw(restartBtn.sprite_);
 
 		window.display();
 	}
-}
-
-int main() {
-	RenderWindow window;
-	
-	music.openFromFile("audio/happy.wav");
-	music.play();
-	
-	Main().run(window);
-
-	return 0;
 }

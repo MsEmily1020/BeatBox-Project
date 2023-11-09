@@ -6,6 +6,9 @@
 using namespace std;
 using namespace sf;
 
+const int WIDTH = 900;
+const int HEIGHT = 600;
+
 class Object {
 public:
 	int width_;
@@ -58,7 +61,7 @@ public:
 		text.setPosition(Vector2f(x, y));
 		text.setCharacterSize(size);
 		text.setString(content);
-		font.loadFromFile("C:\\windows\\Fonts\\H2GTRE.ttf");
+		font.loadFromFile("C:\\windows\\Fonts\\Arial.ttf");
 		text.setFont(font);
 		text.setFillColor(Color::Black);
 

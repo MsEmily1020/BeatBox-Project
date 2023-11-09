@@ -1,12 +1,15 @@
+#include "LevelUp.h"
 #include "Game.h"
 
-const int WIDTH = 900;
-const int HEIGHT = 600;
+void LevelUp::run(RenderWindow& window) {
+	window.create(VideoMode(WIDTH, HEIGHT), "levelup");
 
-void Game::run(RenderWindow& window) {
-	window.create(VideoMode(WIDTH, HEIGHT), "game");
+	Object background = Object(0, 0, WIDTH, HEIGHT, "levelup.png");
+	Button nextBtn = Button(430, 550, 250, 210, "nextbtn.png");
 
-	Object background = Object(0, 0, WIDTH, HEIGHT, "game_background.jpg");
+	Music music;
+	music.openFromFile("audio/levelup.wav");
+	music.play();
 
 	while (window.isOpen())
 	{
@@ -15,11 +18,17 @@ void Game::run(RenderWindow& window) {
 		{
 			if (e.type == Event::Closed)
 				window.close();
+
+			nextBtn.mousePos = Mouse::getPosition(window);
+			nextBtn.clickBtn("game");
+
+			if (nextBtn.getNext() == 5) Game().run(window);
 		}
 
 		window.clear();
 
 		window.draw(background.sprite_);
+		window.draw(nextBtn.sprite_);
 
 		window.display();
 	}
