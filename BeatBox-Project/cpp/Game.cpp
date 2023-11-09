@@ -1,8 +1,5 @@
 #include "Game.h"
 
-const int WIDTH = 900;
-const int HEIGHT = 600;
-
 void Game::run(RenderWindow& window) {
 	window.create(VideoMode(WIDTH, HEIGHT), "game");
 

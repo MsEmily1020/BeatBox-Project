@@ -1,8 +1,5 @@
 #include "Menu.h"
 
-const int WIDTH = 900;
-const int HEIGHT = 600;
-
 void Menu::run(RenderWindow& window) {
 	window.create(VideoMode(WIDTH, HEIGHT), "menu");
 

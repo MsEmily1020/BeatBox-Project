@@ -3,9 +3,6 @@
 
 Music music;
 
-const int WIDTH = 900;
-const int HEIGHT = 600;
-
 void Main::run(RenderWindow& window) {
 	window.create(VideoMode(WIDTH, HEIGHT), "MusicTokTok");
 

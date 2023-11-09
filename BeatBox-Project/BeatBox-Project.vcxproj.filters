@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cpp\Main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="cpp\Select.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -27,6 +24,12 @@
     <ClCompile Include="cpp\Game.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="cpp\Main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+=======
+>>>>>>> e349c8aeb83699b12b5806a6eeb4b2086f1f7fb1
     <ClCompile Include="cpp\Ending.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -48,6 +51,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="header\Game.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="header\Ending.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="header\HappyEnding.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="header\LevelUp.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

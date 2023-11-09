@@ -158,7 +158,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header\Ending.h" />
     <ClInclude Include="header\Game.h" />
+    <ClInclude Include="header\HappyEnding.h" />
+    <ClInclude Include="header\LevelUp.h" />
     <ClInclude Include="header\Main.h" />
     <ClInclude Include="header\Menu.h" />
     <ClInclude Include="header\Select.h" />
