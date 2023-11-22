@@ -1,3 +1,5 @@
+// made in : ±è¹Î¼­
+
 #include "HappyEnding.h"
 
 void HappyEnding::run(RenderWindow& window) {
