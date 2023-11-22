@@ -75,7 +75,6 @@ public:
 
 	void setText(int x, int y, String content) {
 		text.setString(content);
-
 		text.setPosition(Vector2f(x, y));
 
 		if (x == 0) {
