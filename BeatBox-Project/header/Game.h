@@ -34,8 +34,8 @@ private:
 	deque<ArrowShape> questions; // 화살의 정보를 담는 덱 (큐)
 
 	float frame; // 화살 애니메이션 프레임
-	float frameSpeed; // 화살 애니메이션 속도
 	int frameLimit; // 화살 애니메이션 프레임 제한
+	static float frameSpeed; // 화살 애니메이션 속도
 	int dir[4] = { -90, 90, 180, 0 }; // 화살 방향에 대한 각도
 
 	// 현재 입력된 키가 정답인지 확인하는 함수
@@ -48,6 +48,7 @@ private:
 	}
 
 public:
+
 	// 생성자
 	Arrow()
 	{
@@ -58,7 +59,6 @@ public:
 		Rect<float> rect = s.getGlobalBounds();
 		s.setOrigin(Vector2f(rect.width / 2, rect.height / 2));
 		frame = 20.f;
-		frameSpeed = 0.6f;
 		frameLimit = 20;
 	}
 
@@ -67,6 +67,8 @@ public:
 
 	// 초기화 함수
 	void Init() { questions.clear(); }
+
+	void setSpeed(float speed) { frameSpeed = speed; }
 
 	// 키 입력을 확인하고 정답 여부를 반환하는 함수
 	bool CheckKey()

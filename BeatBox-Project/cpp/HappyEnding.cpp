@@ -2,8 +2,11 @@
 
 void HappyEnding::run(RenderWindow& window) {
 	window.create(VideoMode(WIDTH, HEIGHT), "HappyEnding");
+
+	// object
 	Object background = Object(0, 0, WIDTH, HEIGHT, "happyending.png");
 
+	// À½¾Ç
 	Music music;
 	music.openFromFile("audio/happyending.wav");
 	music.play();

@@ -1,10 +1,14 @@
 #include "Game.h"
 #include "LevelUp.h"
+#include "Select.h"
+#include "HappyEnding.h"
+
 void Game::run(RenderWindow& window)
 {
 	window.create(VideoMode(WIDTH, HEIGHT), "game");
 	window.setFramerateLimit(30);
 
+	// object
 	TextString scoreText = TextString(10, 10, 24, "Score: ");
 	scoreText.text.setFillColor(Color::White);
 	// 윈도우 초기화
@@ -31,6 +35,7 @@ void Game::run(RenderWindow& window)
 		if (pGameMgr->GetScore() >= 10)
 		{
 			window.close();
+			Select().stopSong();
 			LevelUp().run(window);
 		}
 
