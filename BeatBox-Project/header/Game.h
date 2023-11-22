@@ -189,11 +189,11 @@ public:
 		imgWrong.setOrigin(Vector2f(rect.width / 2, rect.height / 2));
 	}
 
-	void IncreaseScore() { score++; }
-	void DecreaseHealth() { health--; }
+	void IncreaseScore() { score++; }// 점수 증가 함수
+	void DecreaseHealth() { health--; }// 체력 감소 함수
 	
-	int GetHealth() const { return health; }
-	int GetScore() const { return score; }
+	int GetHealth() const { return health; }// 현재 체력 반환 함수
+	int GetScore() const { return score; }// 현재 점수 반환 함수
 
 	// 초기화 함수
 	void Init() { pArrow->Init(); }
@@ -219,7 +219,7 @@ public:
 			state = WRONG;
 		}
 	}
-
+	// 화살 이동 함수
 	void Move()
 	{
 		pArrow->ArrowSetting();
@@ -231,7 +231,7 @@ public:
 		switch (state)
 		{
 		case WRONG:
-			//game over.
+			// 오답 시 게임 오버
 			state = NONE;
 			imgWrong.setPosition(firstArrowPos.x, firstArrowPos.y);
 			window.draw(imgWrong);
@@ -239,7 +239,7 @@ public:
 			DecreaseHealth();
 			break;
 		case CORRECT:
-			//score up.
+			// 정답 시 점수 증가
 			IncreaseScore();
 			state = NONE;
 			break;
@@ -253,17 +253,18 @@ public:
 	{
 		if (GetHealth() <= 0)
 		{
-
+			// 체력이 0 이하인 경우
 			sleep(seconds(3));
 			isGameOver = true;
-			Init(); // Reset the game
+			Init(); // 게임 재시작
 		}
 
 		else if (isGameOver)
 		{
+			// 게임 오버 후 3초 대기 후 게임 재시작
 			sleep(seconds(3));
 			isGameOver = false;
-			Init(); // Reset the game
+			Init(); // 게임 재시작
 		}
 	}
 };
