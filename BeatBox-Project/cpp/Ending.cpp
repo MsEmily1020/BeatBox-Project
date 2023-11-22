@@ -1,3 +1,5 @@
+// made in : ±è¹Î¼­
+
 #include "Ending.h"
 
 void Ending::run(RenderWindow& window) {

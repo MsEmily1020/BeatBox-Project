@@ -1,4 +1,6 @@
-﻿#pragma once
+﻿// made in : 김혜승
+
+#pragma once
 
 #include "Main.h"
 
