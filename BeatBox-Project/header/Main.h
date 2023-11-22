@@ -73,7 +73,7 @@ public:
 		}
 	}
 
-	void setText(int x, int y, String content) { 
+	void setText(int x, int y, String content) {
 		text.setString(content);
 
 		text.setPosition(Vector2f(x, y));
@@ -88,6 +88,6 @@ public:
 };
 
 class Main {
-public: 
+public:
 	void run(RenderWindow& window);
 };
