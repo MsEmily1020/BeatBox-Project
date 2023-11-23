@@ -16,11 +16,6 @@
 - 리듬을 즐기면서 나오는 화살표에 맞게 방향키를 누르세요
 - 7개의 노래 선택 가능
 
-## Contribute to
-- 메인 화면 및 게임 방법 화면 UI 및 버튼 기능 구현
-- 노래 선택 화면에서 해당 노래 나오도록 구현
-- 클래스 구조화, 분리 및 헤더 파일 분리 작업
-
 ![image](https://github.com/MsEmily1020/BeatBox-Project/assets/121646949/63c9b863-337a-4d5b-b449-ce61d4c95565)
 
 ![image](https://github.com/MsEmily1020/BeatBox-Project/assets/121646949/72242f88-f9cc-4037-a812-8ec03e916813)
